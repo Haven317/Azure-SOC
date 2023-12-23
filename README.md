@@ -3,7 +3,7 @@
 
 ## Introduction
 
-In this project, I build a mini honeynet in Azure and ingest log sources from various resources into a Log Analytics workspace, which is then used by Microsoft Sentinel to build attack maps, trigger alerts, and create incidents. I measured some security metrics in the insecure environment for 24 hours, apply some security controls to harden the environment, measure metrics for another 24 hours, then show the results below. The metrics we will show are:
+In this project, I build a mini honeynet in Azure and ingest log sources from various resources into a Log Analytics workspace, which is then used by Microsoft Sentinel to build attack maps, trigger alerts, and create incidents. I measured some security metrics in the insecure environment for 24 hours, apply some security controls like NIST SP 800-53 Rev. 5 Security and Privacy Controls for Information Systems and Organizations and 800-61 R. 2 Computer Security Incident Handling to harden the environment, measure metrics for another 24 hours, then show the results below. The metrics we will show are:
 
 - SecurityEvent (Windows Event Logs)
 - Syslog (Linux Event Logs)
@@ -32,23 +32,24 @@ For the "BEFORE" metrics, all resources were originally deployed, exposed to the
 For the "AFTER" metrics, Network Security Groups were hardened by blocking ALL traffic with the exception of my admin workstation, and all other resources were protected by their built-in firewalls as well as Private Endpoint
 
 ## Attack Maps Before Hardening / Security Controls
-![NSG Allowed Inbound Malicious Flows](https://i.imgur.com/1qvswSX.png)<br>
-![Linux Syslog Auth Failures](https://i.imgur.com/G1YgZt6.png)<br>
-![Windows RDP/SMB Auth Failures](https://i.imgur.com/ESr9Dlv.png)<br>
+![NSG Allowed Inbound Malicious Flows] ![image](https://github.com/Haven317/Azure-SOC/assets/154647603/f5ed55a7-d6b5-4e17-ba46-2dcc421915cd)
+![Windows RDP/SMB Auth Failures] ![image](https://github.com/Haven317/Azure-SOC/assets/154647603/1440e54e-ddb2-4f5f-9327-3f3abb89ba6f)
+![Mssql Auth Failures] ![image](https://github.com/Haven317/Azure-SOC/assets/154647603/250dc8e4-6c4d-45ae-b9d0-83c930f3679a)
+
 
 ## Metrics Before Hardening / Security Controls
 
 The following table shows the metrics we measured in our insecure environment for 24 hours:
-Start Time 2023-03-15 17:04:29
-Stop Time 2023-03-16 17:04:29
+Start Time 12/17/2023, 4:01:45.461 PM
+Stop Time 12/18/2023, 4:01:45.461 PM
 
 | Metric                   | Count
 | ------------------------ | -----
-| SecurityEvent            | 19470
-| Syslog                   | 3028
-| SecurityAlert            | 10
-| SecurityIncident         | 348
-| AzureNetworkAnalytics_CL | 843
+| SecurityEvent            | 43260
+| Syslog                   | 11322
+| SecurityAlert            | 14
+| SecurityIncident         | 431
+| AzureNetworkAnalytics_CL | 1514
 
 ## Attack Maps Before Hardening / Security Controls
 
@@ -57,13 +58,13 @@ Stop Time 2023-03-16 17:04:29
 ## Metrics After Hardening / Security Controls
 
 The following table shows the metrics we measured in our environment for another 24 hours, but after we have applied security controls:
-Start Time 2023-03-18 15:37
-Stop Time	2023-03-19 15:37
+Start Time 12/21/2023, 5:29:58.688 PM
+Stop Time	12/22/2023, 5:29:58.688 PM
 
 | Metric                   | Count
 | ------------------------ | -----
-| SecurityEvent            | 8778
-| Syslog                   | 25
+| SecurityEvent            | 8933
+| Syslog                   | 1
 | SecurityAlert            | 0
 | SecurityIncident         | 0
 | AzureNetworkAnalytics_CL | 0
